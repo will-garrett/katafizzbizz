@@ -11,15 +11,15 @@ class FizzBiz{
     const DIV2 = 5;
 
     public static function calculate($_number, $_div1 = self::DIV1, $_div2 = self::DIV2){
-        $three = $_number % 3;
-        $five = $_number % 5;
-        if($three === 0 && $five === 0){
+        $first = $_number % $_div1;
+        $second = $_number % $_div2;
+        if($first === 0 && $second === 0){
             self::lineout("FIZZYB", $_number);
         }
-        else if($three === 0){
+        else if($first === 0){
             self::lineout("FIZZ", $_number);
         }
-        else if($five === 0){
+        else if($second === 0){
             self::lineout("BIZZ", $_number);
         }
         else{
@@ -27,19 +27,27 @@ class FizzBiz{
         }
     }
     public static function lineout($_string, $_num = NULL){
-        echo $_string;
         if($_num != NULL){
-            echo "\t\t - {$_num} ";
+            echo "  {$_string} ({$_num}) ";
         }
-        echo "\n";
+        else{
+            echo " {$_string} ";
+        }
+    }
+    public static function get_range($start, $finish, $divisor1 = self::DIV1, $divisor2 = self::DIV2){
+        for($i = $start; $i<=$finish; $i++){
+            self::calculate($i, $divisor1, $divisor2);
+        }
     }
 }
 
 
-
-
+FizzBiz::get_range(1, 21);
+echo "\n";
+FizzBiz::get_range(1, 21, 7, 9);
+/*
 for($i = 1; $i<=15; $i++){
     FizzBiz::calculate($i);
-}
+}*/
 echo "\n<EOL>\n";
 ?>
