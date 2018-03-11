@@ -6,8 +6,6 @@
 */
 namespace WillOG;
 
-use phpDocumentor\Reflection\Types\Null_;
-
 class FizzBiz{
     const DIV1 = 3;
     const DIV2 = 5;
